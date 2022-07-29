@@ -1,0 +1,74 @@
+#signup {
+  width: 90%;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+#signup-header {
+  margin-bottom: 1rem;
+}
+
+#signup-header span {
+  position: relative;
+  top: 5px;
+  right: 3px;
+}
+
+/* ----- Form ----- */
+#signup-form {
+  width: 100%;
+  margin: 0 auto 1rem auto;
+  padding: 1.5rem 0;
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+  font-size: var(--default-font);
+}
+
+.signup-input {
+  margin-bottom: 1.5rem;
+}
+
+.signup-input label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.signup-input input {
+  width: 80%;
+  padding: 0.3rem 0.5rem;
+  border: 0.05rem solid gray;
+  border-radius: 0.3rem;
+  font-size: var(--default-font);
+}
+
+#signup-submit input {
+  padding: 0.5rem 0.8rem;
+  background-color: var(--second-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+}
+
+#signup-submit input:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* ----- /Form ----- */
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #signup-form {
+    width: 70%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #signup-form {
+    width: 50%;
+  }
+}
+/* ----- /Breakpoints ----- */
