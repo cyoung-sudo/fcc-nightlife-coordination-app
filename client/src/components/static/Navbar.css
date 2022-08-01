@@ -17,13 +17,13 @@
   font-style: italic;
 }
 
+/* ----- Links ----- */
 #navbar-links {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   min-height: 100%;
   width: 50%;
-  font-size: var(--default-font);
 }
 
 #navbar-links a {
@@ -33,9 +33,19 @@
   padding: 0.5rem 0.8rem;
   color: white;
   text-decoration: none;
+  font-size: var(--default-font);
 }
 
-#navbar-links a:hover {
+#navbar-logout {
+  padding: 0.5rem 0.8rem;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  font-size: var(--default-font);
+}
+
+#navbar-links a:hover, #navbar-logout:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+/* ----- /Links ----- */

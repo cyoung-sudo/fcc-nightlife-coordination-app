@@ -57,6 +57,24 @@
 }
 /* ----- /Form ----- */
 
+/* ----- Pop-up messages ----- */
+#signup-error-msg {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto 1.5rem auto;
+}
+
+#signup-error-msg div {
+  padding: 0.7rem 1rem;
+  background-color: var(--error-color);
+  border-radius: 0.5rem;
+  font-size: var(--default-font);
+  font-style: italic;
+  font-weight: 300;
+}
+/* ----- /Pop-up messages ----- */
+
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {

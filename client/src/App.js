@@ -8,6 +8,9 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Bars from './components/bars/Bars';
 import Profile from './components/user/Profile';
+// Wrappers
+import GeneralWrapper from './components/wrappers/GeneralWrapper';
+import AuthWrapper from './components/wrappers/AuthWrapper';
 
 function App() {
   return (
@@ -16,10 +19,41 @@ function App() {
         <Navbar/>
         <div id="app-content">
           <Routes>
-            <Route path="/" element={<Bars/>}/>
-            <Route path="/signup" element={<Signup/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route 
+              path="/"
+              element={(
+                <GeneralWrapper>
+                  <Bars/>
+                </GeneralWrapper>
+              )}
+            />
+
+            <Route
+              path="/signup"
+              element={(
+                <GeneralWrapper>
+                  <Signup/>
+                </GeneralWrapper>
+              )}
+            />
+
+            <Route
+              path="/login"
+              element={(
+                <GeneralWrapper>
+                  <Login/>
+                </GeneralWrapper>
+              )}
+            />
+
+            <Route
+              path="/profile"
+              element={(
+                <AuthWrapper>
+                  <Profile/>
+                </AuthWrapper>
+              )}
+            />
           </Routes>
         </div>
         <Footer/>
