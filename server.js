@@ -25,6 +25,7 @@ app.use(passport.session());
 
 //----- Routes
 app.use(require("./routes/auth"));
+app.use(require("./routes/yelpApi"));
  
 //----- Connection
 const port = process.env.PORT || 5000;

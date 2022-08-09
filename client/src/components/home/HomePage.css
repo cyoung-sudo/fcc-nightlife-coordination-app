@@ -1,0 +1,25 @@
+#home-page {
+  width: 90%;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+#home-page-header {
+  margin-bottom: 1rem;
+}
+
+#home-page-links a {
+  padding: 0.5rem 0.8rem;
+  background-color: var(--second-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#home-page-links a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

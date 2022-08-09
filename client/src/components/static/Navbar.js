@@ -3,7 +3,7 @@ import axios from 'axios';
 // React
 import { useState, useEffect } from 'react';
 // Router
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 // Icons
 import { IoIosWine } from 'react-icons/io';
 
@@ -56,12 +56,12 @@ export default function Navbar(props) {
 
   return (
     <div id="navbar">
-      <div id="navbar-name"><IoIosWine/>Nightlife</div>
+      <Link to="/" id="navbar-name"><IoIosWine/>Nightlife</Link>
       <div id="navbar-links">
         <NavLink 
             to="/"
             style={({ isActive }) => isActive ? activeStyle : undefined
-          }>Bars</NavLink>
+          }>Home</NavLink>
 
         {!loggedIn && 
           <NavLink 
@@ -72,7 +72,7 @@ export default function Navbar(props) {
 
         {!loggedIn && 
           <NavLink 
-            to="login"
+            to="/login"
             style={({ isActive }) => isActive ? activeStyle : undefined
           }>Login</NavLink>
         }
