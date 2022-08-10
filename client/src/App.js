@@ -9,6 +9,7 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Bars from './components/bars/Bars';
 import SearchBars from './components/bars/SearchBars';
+import Bar from './components/bars/Bar';
 import Profile from './components/user/Profile';
 // Wrappers
 import GeneralWrapper from './components/wrappers/GeneralWrapper';
@@ -54,13 +55,23 @@ function App() {
                     </GeneralWrapper>
                   )}
                 />
-                <Route path="bars"
-                  element={(
-                    <GeneralWrapper>
-                      <Bars/>
-                    </GeneralWrapper>
-                  )}
-                />
+                <Route path="bars">
+                  <Route index 
+                    element={(
+                      <GeneralWrapper>
+                        <Bars/>
+                      </GeneralWrapper>
+                    )}
+                  />
+                  <Route
+                    path="info"
+                    element={(
+                      <GeneralWrapper>
+                        <Bar/>
+                      </GeneralWrapper>
+                    )}
+                  />
+                </Route>
               </Route>
 
               <Route

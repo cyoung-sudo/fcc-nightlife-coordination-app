@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(session({
   name: "session-id",
   secret: process.env.SESSION_SECRET,
-  cookie: {maxAge: 20000}, // 20sec
+  cookie: {maxAge: 60000 * 5}, // 60sec
   saveUninitialized: false,
   resave: false
 }));
@@ -26,6 +26,7 @@ app.use(passport.session());
 //----- Routes
 app.use(require("./routes/auth"));
 app.use(require("./routes/yelpApi"));
+app.use(require("./routes/user"));
  
 //----- Connection
 const port = process.env.PORT || 5000;

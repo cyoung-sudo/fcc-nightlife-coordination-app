@@ -56,6 +56,7 @@ export default function Bars(props) {
             <div>{result.price}</div>
             <div>{result.location.display_address}</div>
             <div>{result.is_closed ? "Closed" : "Open"}</div>
+            <Link to="info" state={{ bar: result }}>More Info</Link>
           </li>
         ))}
       </div>
