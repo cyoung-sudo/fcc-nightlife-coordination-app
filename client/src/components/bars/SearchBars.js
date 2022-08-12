@@ -3,13 +3,17 @@ import axios from 'axios';
 // React
 import { useState } from 'react';
 // Router
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// Icons
+import { BiSearchAlt } from 'react-icons/bi';
 
 export default function SearchBars(props) {
   // Controlled inputs
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState(new Array(4).fill(false));
   const [open, setOpen] = useState(true);
+  // Messages
+  const [errorMsg, setErrorMsg] = useState("");
   // Hooks
   const navigate = useNavigate();
 
@@ -19,23 +23,29 @@ export default function SearchBars(props) {
     e.preventDefault();
     // Format prices
     let formattedPrices = formatPrices();
-    //Validations...
-    // Send form data to server
-    axios({
-      method: "post",
-      data: {
-        location,
-        price: formattedPrices,
-        open
-      },
-      withCredentials: true,
-      url: "/api/yelp"
-    })
-    .then(res => {
-      // Navigate to search results
-      navigate("/search-bars/bars", {state: {searchResults: res.data.businesses}});
-    })
-    .catch(err => console.log(err));
+    // Validations
+    if(location === "") {
+      handleErrorMsg("No location was given");
+    } else if(formattedPrices === "") {
+      handleErrorMsg("No price(s) was given");
+    } else {
+      // Send form data to server
+      axios({
+        method: "post",
+        data: {
+          location,
+          price: formattedPrices,
+          open
+        },
+        withCredentials: true,
+        url: "/api/yelp/search"
+      })
+      .then(res => {
+        // Navigate to search results
+        navigate("/search-bars/bars", {state: {searchResults: res.data.businesses}});
+      })
+      .catch(err => console.log(err));
+    }
   };
 
   // Update price array state
@@ -58,10 +68,23 @@ export default function SearchBars(props) {
     return result.join(",");
   };
 
+  // Display error message
+  const handleErrorMsg = message => {
+    // Scroll to top of page
+    window.scrollTo(0, 0);
+    setErrorMsg(message);
+  };
+
   return (
     <div id="search-bars">
+      {errorMsg && 
+        <div id="search-bars-error-msg">
+          <div>{errorMsg}</div>
+        </div>
+      }
+
       <div id="search-bars-header">
-        <h1>Bar Search</h1>
+        <h1><span><BiSearchAlt/></span>Bar Search</h1>
       </div>
 
       <form id="search-bars-form" onSubmit={handleSearch}>
@@ -69,14 +92,14 @@ export default function SearchBars(props) {
           <label>Location</label>
           <input type="text" onChange={e => setLocation(e.target.value)} placeholder="location"/>
         </div>
-        <div className="search-bars-input">
+        <div className="search-bars-radio">
           <label>Price</label>
           <input type="checkbox" value="0" name="price" onChange={e => handlePrice(e.target.value)}/> $
           <input type="checkbox" value="1" name="price" onChange={e => handlePrice(e.target.value)}/> $$
           <input type="checkbox" value="2" name="price" onChange={e => handlePrice(e.target.value)}/> $$$
           <input type="checkbox" value="3" name="price" onChange={e => handlePrice(e.target.value)}/> $$$$
         </div>
-        <div className="search-bars-input">
+        <div className="search-bars-radio">
           <label>Open Now</label>
           <input type="radio" value={true} name="open" defaultChecked onChange={e => setOpen(e.target.value)}/> Yes
           <input type="radio" value={false} name="open" onChange={e => setOpen(e.target.value)}/> No
@@ -85,10 +108,6 @@ export default function SearchBars(props) {
           <input type="submit" value="Submit"/>
         </div>
       </form>
-
-      <div id="search-bars-links">
-        <Link to="/">Back</Link> to bars page
-      </div>
     </div>
   );
 };

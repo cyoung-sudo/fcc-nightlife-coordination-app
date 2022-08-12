@@ -78,14 +78,14 @@
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
-  #signup-form {
+  #signup {
     width: 70%;
   }
 }
  
 /* Extra big screen devices (1200px and above) */
 @media only screen and (min-width: 1200px) {
-  #signup-form {
+  #signup {
     width: 50%;
   }
 }

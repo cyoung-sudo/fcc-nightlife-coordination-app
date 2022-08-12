@@ -3,6 +3,10 @@ import './Bars.css';
 import { useState, useEffect } from 'react';
 // Router
 import { Link, useLocation } from 'react-router-dom';
+// Icons
+import { BsStarFill, BsStar } from 'react-icons/bs';
+// Rating
+import Rating from 'react-rating';
 
 export default function Bars(props) {
   // Pagination
@@ -41,25 +45,31 @@ export default function Bars(props) {
         <Link to="/search-bars">Search Bars</Link>
       </div>
 
-      <div id="bars-results">
+      <ul id="bars-results">
         {pageContent && pageContent.map(result => (
           <li key={result.id}>
             <img src={result.image_url} alt="image"/>
             <div className="bars-name">{result.name}</div>
-            <div className="bars-rating">Rating: {result.rating}</div>
-            <div>Review Count: {result.review_count}</div>
+            <div className="bars-rating">
+              <Rating 
+                start={0}
+                stop={5}
+                fractions={2}
+                initialRating={result.rating}
+                readonly={true}
+                emptySymbol={<BsStar/>}
+                fullSymbol={<BsStarFill/>}/> {result.review_count}
+            </div>
             <div className="bars-categories">
               {result.categories.map(category => (
                 <div key={category.alias}>{category.title}</div>
               ))}
             </div>
-            <div>{result.price}</div>
-            <div>{result.location.display_address}</div>
+            <Link to={result.id}>More Info</Link>
             <div>{result.is_closed ? "Closed" : "Open"}</div>
-            <Link to="info" state={{ bar: result }}>More Info</Link>
           </li>
         ))}
-      </div>
+      </ul>
 
       <div id="bars-pagination">
         <div>Page: {page}/{(Math.ceil(searchResults.length / 10))}</div>

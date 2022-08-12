@@ -64,7 +64,7 @@ function App() {
                     )}
                   />
                   <Route
-                    path="info"
+                    path=":barId"
                     element={(
                       <GeneralWrapper>
                         <Bar/>

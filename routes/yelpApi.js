@@ -4,7 +4,7 @@ const axios = require("axios");
 const yelpApiRoutes = express.Router();
 
 //----- Retrieve search results
-yelpApiRoutes.post("/api/yelp", (req, res) => {
+yelpApiRoutes.post("/api/yelp/search", (req, res) => {
   const apiEndpoint = "https://api.yelp.com/v3/businesses";
   const params = `/search?location=${req.body.location}&price=${req.body.price}&open_now=${req.body.open}`;
   const staticParams = "&categories=bars&limit=50&sort_by=best_match";
@@ -21,6 +21,28 @@ yelpApiRoutes.post("/api/yelp", (req, res) => {
   .then(apiRes => {
     res.json({
       businesses: apiRes.data.businesses
+    })
+  })
+  .catch(err => console.log(err));
+});
+
+//----- Retrieve search results
+yelpApiRoutes.post("/api/yelp/details", (req, res) => {
+  const apiEndpoint = "https://api.yelp.com/v3/businesses";
+  const params = `/${req.body.barId}`;
+
+  // Request bar details from API
+  axios({
+    method: "get",
+    withCredentials: true,
+    url: apiEndpoint + params,
+    headers: {
+      Authorization: `Bearer ${process.env.YELP_API_KEY}`
+    }
+  })
+  .then(apiRes => {
+    res.json({
+      bar: apiRes.data
     })
   })
   .catch(err => console.log(err));

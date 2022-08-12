@@ -1,0 +1,35 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+#bar {
+  width: 90%;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+#bar-rating span {
+  color: orange;
+}
+
+#bar-details {
+  display: flex;
+  justify-content: center;
+}
+
+#bar-links a, #bar-links button {
+  padding: 0.5rem 0.8rem;
+  background-color: var(--second-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#bar-links a:hover, #bar-links button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#bar-photos {
+}
