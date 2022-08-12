@@ -60,7 +60,7 @@ export default function Bar(props) {
       method: "post",
       data: { bar },
       withCredentials: true,
-      url: "/api/user/addBar"
+      url: "/api/user/bar"
     })
     .then(res => {
       if(res.data.success) {

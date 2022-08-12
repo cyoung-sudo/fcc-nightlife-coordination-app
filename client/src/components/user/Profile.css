@@ -1,0 +1,100 @@
+#profile {
+  width: 90%;
+  margin: 4rem 0;
+  text-align: center;
+}
+
+#profile-header {
+  margin-bottom: 1rem;
+}
+
+#profile-bars {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0 auto;
+  list-style: none;
+}
+
+#profile-bars li {
+  width: 100%;
+  margin-bottom: 3rem;
+  border: 0.05rem solid gray;
+}
+
+#profile-bars img {
+  display: block;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+#profile-bars div {
+  margin-bottom: 0.3rem;
+}
+
+.profile-bars-name {
+  font-size: var(--large-font);
+  font-weight: bold;
+}
+
+.profile-bars-rating span {
+  color: orange;
+}
+
+.profile-bars-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--small-font);
+  font-style: italic;
+}
+
+.profile-bars-categories div {
+  margin: 0 0.3rem;
+}
+
+.priofile-bars-links a, .priofile-bars-links button {
+  display: inline-block;
+  margin: 0 0.3rem 0.3rem 0.3rem;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--second-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.priofile-bars-links a:hover, .priofile-bars-links button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ----- Breakpoints ----- */
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+  #profile-bars {
+    width: 90%;
+  }
+
+  #profile-bars li {
+    width: 45%;
+  }
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  #profile-bars {
+    width: 80%;
+  }
+
+  #profile-bars li {
+    width: 30%;
+  }
+}
+/* ----- /Breakpoints ----- */

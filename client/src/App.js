@@ -47,31 +47,30 @@ function App() {
                 )}
               />
 
-              <Route path="search-bars">
+              <Route path="search-bars"
+                element={(
+                  <GeneralWrapper>
+                    <SearchBars/>
+                  </GeneralWrapper>
+                )}
+              />
+                
+              <Route path="bars">
                 <Route index 
                   element={(
                     <GeneralWrapper>
-                      <SearchBars/>
+                      <Bars/>
                     </GeneralWrapper>
                   )}
                 />
-                <Route path="bars">
-                  <Route index 
-                    element={(
-                      <GeneralWrapper>
-                        <Bars/>
-                      </GeneralWrapper>
-                    )}
-                  />
-                  <Route
-                    path=":barId"
-                    element={(
-                      <GeneralWrapper>
-                        <Bar/>
-                      </GeneralWrapper>
-                    )}
-                  />
-                </Route>
+                <Route
+                  path=":barId"
+                  element={(
+                    <GeneralWrapper>
+                      <Bar/>
+                    </GeneralWrapper>
+                  )}
+                />
               </Route>
 
               <Route

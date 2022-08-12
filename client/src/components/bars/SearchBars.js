@@ -42,7 +42,7 @@ export default function SearchBars(props) {
       })
       .then(res => {
         // Navigate to search results
-        navigate("/search-bars/bars", {state: {searchResults: res.data.businesses}});
+        navigate("/bars", {state: {searchResults: res.data.businesses}});
       })
       .catch(err => console.log(err));
     }
