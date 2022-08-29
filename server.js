@@ -27,6 +27,15 @@ app.use(passport.session());
 app.use(require("./routes/auth"));
 app.use(require("./routes/yelpApi"));
 app.use(require("./routes/user"));
+
+if(process.env.NODE_ENV === 'production') {
+  // Serve static files from the client folder
+  app.use(express.static('client/build'));
+  // Load the React "index" for any "GET" routes not defined above
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
  
 //----- Connection
 const port = process.env.PORT || 5000;
