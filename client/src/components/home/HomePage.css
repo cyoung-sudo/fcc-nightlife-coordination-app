@@ -1,16 +1,35 @@
 #home-page {
-  width: 90%;
-  margin: 4rem 0;
-  text-align: center;
+  height: calc(100vh - 50px);
+  width: 100vw;
+  background-image: url("https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg");
+  background-position: center;
+}
+
+#home-page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--light-dark-color);
 }
 
 #home-page-header {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  color: white;
+  text-align: center;
+}
+
+#home-page-header h1 {
+  margin-bottom: 0.3rem;
+  font-style: italic;
+  font-weight: 900;
 }
 
 #home-page-links a {
   padding: 0.5rem 0.8rem;
-  background-color: var(--second-color);
+  background-color: var(--theme-color1);
   color: white;
   border: none;
   border-radius: 0.5rem;

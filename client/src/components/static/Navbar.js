@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 // Icons
 import { IoIosWine } from 'react-icons/io';
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 export default function Navbar(props) {
   // Requested data
@@ -13,31 +14,23 @@ export default function Navbar(props) {
   // Hooks
   const navigate = useNavigate();
 
-  // Styling for active navlink
-  const activeStyle = {
-    backgroundColor: "white",
-    color: "black"
-  };
-
-    //----- Check session status
-    useEffect(() => {
-      // Request for session status
-      axios({
-        method: "get",
-        withCredentials: true,
-        url: "/api/auth/getSession"
-      })
-      .then(res => {
-        if(res.data.success) {
-          // Update local state
-          setLoggedIn(true);
-        } else {
-          // Update local state
-          setLoggedIn(false);
-        }
-      })
-      .catch(err => console.log(err));
-    });
+  //----- Check session status
+  useEffect(() => {
+    // Request for session status
+    axios({
+      method: "get",
+      withCredentials: true,
+      url: "/api/auth/getSession"
+    })
+    .then(res => {
+      if(res.data.success) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    })
+    .catch(err => console.log(err));
+  });
 
   //----- Handle user logout
   const logout = () =>{
@@ -54,40 +47,124 @@ export default function Navbar(props) {
     .catch(err => console.log(err));
   };
 
+  // Styling for active navlink
+  const activeStyle = {
+    backgroundColor: "crimson",
+    color: "white"
+  };
+
   return (
     <div id="navbar">
-      <Link to="/" id="navbar-name"><IoIosWine/>Nightlife</Link>
-      <div id="navbar-links">
-        <NavLink 
+      <Link to="/" id="navbar-logo">Nightlife<span><IoIosWine/></span></Link>
+
+      {/* Links */}
+      <ul id="navbar-links">
+        <li>
+          <NavLink 
             to="/"
             style={({ isActive }) => isActive ? activeStyle : undefined
           }>Home</NavLink>
+        </li>
 
         {!loggedIn && 
-          <NavLink 
-            to="signup"
-            style={({ isActive }) => isActive ? activeStyle : undefined
-          }>Signup</NavLink>
+          <li>
+            <NavLink 
+              to="signup"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Signup</NavLink>
+          </li>
         }
 
         {!loggedIn && 
-          <NavLink 
-            to="/login"
-            style={({ isActive }) => isActive ? activeStyle : undefined
-          }>Login</NavLink>
+          <li>
+            <NavLink 
+              to="login"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Login</NavLink>
+          </li>
         }
 
         {loggedIn && 
-          <NavLink 
-            to="profile"
-            style={({ isActive }) => isActive ? activeStyle : undefined
-          }>Profile</NavLink>
+          <li>
+            <NavLink 
+              to="search-bars"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Search</NavLink>
+          </li>
         }
 
         {loggedIn && 
-          <button id="navbar-logout" onClick={logout}>Logout</button>
+          <li>
+            <NavLink 
+              to="profile"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Profile</NavLink>
+          </li>
         }
-      </div>
+
+        {loggedIn && 
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        }
+      </ul>
+      {/* /Links */}
+
+      <input id="navbar-collapse-toggle" type="checkbox"/>
+      <label id="navbar-collapse-button" htmlFor="navbar-collapse-toggle"><GiHamburgerMenu/></label>
+
+      {/* Collapsed links */}
+      <ul id="navbar-collapse-links">
+        <li>
+          <NavLink 
+            to="/"
+            style={({ isActive }) => isActive ? activeStyle : undefined
+          }>Home</NavLink>
+        </li>
+
+        {!loggedIn && 
+          <li>
+            <NavLink 
+              to="signup"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Signup</NavLink>
+          </li>
+        }
+
+        {!loggedIn && 
+          <li>
+            <NavLink 
+              to="login"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Login</NavLink>
+          </li>
+        }
+
+        {loggedIn && 
+          <li>
+            <NavLink 
+              to="search-bars"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Search</NavLink>
+          </li>
+        }
+
+        {loggedIn && 
+          <li>
+            <NavLink 
+              to="profile"
+              style={({ isActive }) => isActive ? activeStyle : undefined
+            }>Profile</NavLink>
+          </li>
+        }
+
+        {loggedIn && 
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        }
+      </ul>
+      {/* /Collapsed links */}
     </div>
   );
 };

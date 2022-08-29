@@ -27,7 +27,7 @@ authRoutes.post("/api/auth/signup", (req, res, next) => {
             username: req.body.username
           }, (err, person) => {
             if(err) console.log(err);
-            // (create & store user-obj in "req.user")
+            // Create & stores user-obj in "req.user"
             req.logIn(user, err => {
               if(err) next(err);
               console.log("A new user has logged in");
@@ -56,7 +56,7 @@ authRoutes.post("/api/auth/login", (req, res, next) => {
         });
       } else {
         //--- Valid login
-        // (create & store user-obj in "req.user")
+        // Create & stores user-obj in "req.user"
         req.logIn(user, err => {
           if(err) next(err);
           console.log("A user has logged in");

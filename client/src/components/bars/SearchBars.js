@@ -58,6 +58,7 @@ export default function SearchBars(props) {
   };
 
   // Convert price array to string
+  // ([false, true, true, false] => "$$,$$$")
   const formatPrices = () => {
     let result = []
     for(let i = 0; i < price.length; i++) {
@@ -84,7 +85,7 @@ export default function SearchBars(props) {
       }
 
       <div id="search-bars-header">
-        <h1><span><BiSearchAlt/></span>Bar Search</h1>
+        <h1>Bar Search<span><BiSearchAlt/></span></h1>
       </div>
 
       <form id="search-bars-form" onSubmit={handleSearch}>
@@ -92,6 +93,7 @@ export default function SearchBars(props) {
           <label>Location</label>
           <input type="text" onChange={e => setLocation(e.target.value)} placeholder="location"/>
         </div>
+
         <div className="search-bars-radio">
           <label>Price</label>
           <input type="checkbox" value="0" name="price" onChange={e => handlePrice(e.target.value)}/> $
@@ -99,11 +101,13 @@ export default function SearchBars(props) {
           <input type="checkbox" value="2" name="price" onChange={e => handlePrice(e.target.value)}/> $$$
           <input type="checkbox" value="3" name="price" onChange={e => handlePrice(e.target.value)}/> $$$$
         </div>
+
         <div className="search-bars-radio">
           <label>Open Now</label>
           <input type="radio" value={true} name="open" defaultChecked onChange={e => setOpen(e.target.value)}/> Yes
           <input type="radio" value={false} name="open" onChange={e => setOpen(e.target.value)}/> No
         </div>
+        
         <div id="search-bars-submit">
           <input type="submit" value="Submit"/>
         </div>

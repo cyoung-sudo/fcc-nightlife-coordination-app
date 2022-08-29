@@ -2,14 +2,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 20vh;
   width: 100%;
-  background-color: var(--main-color);
-  color: white;
+  padding: 2rem 1rem;
+  background-color: var(--light-color);
+}
+
+/* ----- Credits ----- */
+#footer-credits div {
+  margin-bottom: 0.3rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+  text-align: center;
 }
 
 #footer-credits a{
-  color: white;
+  display: block;
+  margin-bottom: 0.3rem;
+  color: black;
+  text-align: center;
   text-decoration: none;
   font-size: var(--smaller-font);
 }
@@ -18,3 +28,4 @@
   cursor: pointer;
   text-decoration: underline;
 }
+/* ----- /Credits ----- */

@@ -7,5 +7,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: calc(100vh - 50px);
 }

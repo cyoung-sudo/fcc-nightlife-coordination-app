@@ -58,7 +58,7 @@ export default function Signup(props) {
       }
 
       <div id="signup-header">
-        <h1><span><FaWpforms/></span>Signup</h1>
+        <h1>Signup<span><FaWpforms/></span></h1>
       </div>
 
       <form id="signup-form" onSubmit={handleSignup}>

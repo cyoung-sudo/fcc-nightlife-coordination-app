@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // Icons
 import { BsStarFill, BsStar } from 'react-icons/bs';
+import { FaGlassCheers } from 'react-icons/fa';
 // Rating
 import Rating from 'react-rating';
 
@@ -38,7 +39,7 @@ export default function Bars(props) {
   return (
     <div id="bars">
       <div id="bars-header">
-        <h1>Bar Results</h1>
+        <h1>Bar Results<span><FaGlassCheers/></span></h1>
       </div>
 
       <div id="bars-links">
@@ -65,15 +66,19 @@ export default function Bars(props) {
                 <div key={category.alias}>{category.title}</div>
               ))}
             </div>
-            <Link to={result.id}>More Info</Link>
-            <div>{result.is_closed ? "Closed" : "Open"}</div>
+            <div className="bars-links">
+              <Link to={result.id}>More Info</Link>
+            </div>
+            <div>
+              {result.is_closed ? <span className="bars-closed">Closed</span> : <span className="bars-open">Open</span>}
+            </div>
           </li>
         ))}
       </ul>
 
       <div id="bars-pagination">
-        <div>Page: {page}/{(Math.ceil(searchResults.length / 10))}</div>
-        <div>
+        <div id="bars-page">Page: {page} of {(Math.ceil(searchResults.length / 10))}</div>
+        <div id="bars-page-btns">
           {(page > 1) && 
             <button onClick={() => setPage(page => page - 1)}>Prev</button>
           }   

@@ -15,19 +15,19 @@ userRoutes.route("/api/user/bar")
       )
       .then(userBar => {
         // Check if doc exists
-        let barsCopy
+        let barsCopy;
+        let duplicate = false;
         if(userBar) {
           //--- Doc exists
           barsCopy = [...userBar.bars];
           // Check if bar is already added
-          let valid = true;
           for(let bar of barsCopy) {
             if(bar.id === req.body.bar.id) {
-              valid = false;
+              duplicate = true;
               break;
             }
           }
-          if(valid) {
+          if(!duplicate) {
             barsCopy.push(req.body.bar);
           }
         } else {
@@ -35,16 +35,21 @@ userRoutes.route("/api/user/bar")
           barsCopy = [req.body.bar];
         }
 
-        // Update bars for current user
-        UserBars.findOneAndUpdate(
-          {user_id: req.user._id},
-          {bars: barsCopy},
-          {upsert: true}  // create if DNE
-        )
-        .then(userBar2 => {
-          res.json({ success: true });
-        })
-        .catch(err => console.log(err));
+        // Check if bar is already added
+        if(!duplicate) {
+          // Update bars for current user
+          UserBars.findOneAndUpdate(
+            {user_id: req.user._id},
+            {bars: barsCopy},
+            {upsert: true}  // create if DNE
+          )
+          .then(userBar2 => {
+            res.json({ success: true });
+          })
+          .catch(err => console.log(err));
+        } else {
+          res.json({ success: false })
+        }
       })
       .catch(err => console.log(err));
     } else {

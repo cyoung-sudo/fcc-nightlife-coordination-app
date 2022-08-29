@@ -1,11 +1,18 @@
 #bars {
   width: 90%;
-  margin: 4rem 0;
+  margin: 2rem 0 4rem 0;
   text-align: center;
 }
 
 #bars-header {
   margin-bottom: 1rem;
+}
+
+#bars-header span {
+  position: relative;
+  top: 5px;
+  left: 3px;
+  color: var(--theme-color1);
 }
 
 #bars-links {
@@ -14,7 +21,7 @@
 
 #bars-links a {
   padding: 0.5rem 0.8rem;
-  background-color: var(--second-color);
+  background-color: var(--theme-color1);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -27,6 +34,7 @@
   text-decoration: underline;
 }
 
+/* ----- Bar Results ----- */
 #bars-results {
   display: flex;
   flex-wrap: wrap;
@@ -38,9 +46,7 @@
 }
 
 #bars-results li {
-  width: 100%;
   margin-bottom: 3rem;
-  border: 0.05rem solid gray;
 }
 
 #bars-results img {
@@ -48,39 +54,47 @@
   height: 300px;
   width: 100%;
   margin-bottom: 0.5rem;
-}
-
-#bars-results div {
-  margin-bottom: 0.3rem;
+  border-radius: 0.5rem;
 }
 
 .bars-name {
+  margin-bottom: 0.3rem;
   font-size: var(--large-font);
   font-weight: bold;
 }
 
+.bars-rating {
+  margin-bottom: 0.3rem;
+}
+
 .bars-rating span {
-  color: orange;
+  color: var(--theme-color2);
 }
 
 .bars-categories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  margin-bottom: 0.5rem;
   font-size: var(--small-font);
   font-style: italic;
 }
 
 .bars-categories div {
-  margin: 0 0.3rem;
+  display: inline;
 }
 
-#bars-results a {
+.bars-categories div:after {
+  content: ", ";
+}
+
+.bars-categories div:last-child:after {
+  content: "";
+}
+
+.bars-links a {
   display: inline-block;
   margin-bottom: 0.3rem;
   padding: 0.5rem 0.8rem;
-  background-color: var(--second-color);
+  background-color: var(--theme-color1);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -89,9 +103,44 @@
   text-decoration: none;
 }
 
-#bars-results a:hover {
+.bars-links a:hover {
   text-decoration: underline;
 }
+
+.bars-closed {
+  color: red;
+  font-weight: bold;
+}
+
+.bars-open {
+  color: green;
+  font-weight: bold;
+}
+/* ----- /Bar Results ----- */
+
+/* ----- Pagination ----- */
+#bars-page {
+  margin-bottom: 0.3rem;
+  font-size: var(--small-font);
+  font-style: italic;
+}
+
+#bars-page-btns button {
+  margin: 0 0.3rem;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--theme-color1);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+}
+
+#bars-page-btns button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* ----- /Pagination ----- */
 
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */

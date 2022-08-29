@@ -64,7 +64,7 @@ export default function Login(props) {
       }
 
       <div id="login-header">
-        <h1><span><FaWpforms/></span>Login</h1>
+        <h1>Login<span><FaWpforms/></span></h1>
       </div>
 
       <form id="login-form" onSubmit={handleLogin}>

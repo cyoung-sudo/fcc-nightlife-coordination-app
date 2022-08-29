@@ -1,13 +1,21 @@
 #profile {
   width: 90%;
-  margin: 4rem 0;
+  margin: 2rem 0 4rem 0 ;
   text-align: center;
 }
 
 #profile-header {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
+#profile-header span {
+  position: relative;
+  top: 5px;
+  left: 3px;
+  color: var(--theme-color1);
+}
+
+/* ----- Bars ----- */
 #profile-bars {
   display: flex;
   flex-wrap: wrap;
@@ -19,9 +27,7 @@
 }
 
 #profile-bars li {
-  width: 100%;
   margin-bottom: 3rem;
-  border: 0.05rem solid gray;
 }
 
 #profile-bars img {
@@ -29,39 +35,47 @@
   height: 300px;
   width: 100%;
   margin-bottom: 0.5rem;
-}
-
-#profile-bars div {
-  margin-bottom: 0.3rem;
+  border-radius: 0.5rem;
 }
 
 .profile-bars-name {
+  margin-bottom: 0.3rem;
   font-size: var(--large-font);
   font-weight: bold;
 }
 
+.profile-bars-rating {
+  margin-bottom: 0.3rem;
+}
+
 .profile-bars-rating span {
-  color: orange;
+  color: var(--theme-color2);
 }
 
 .profile-bars-categories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  margin-bottom: 0.5rem;
   font-size: var(--small-font);
   font-style: italic;
 }
 
 .profile-bars-categories div {
-  margin: 0 0.3rem;
+  display: inline;
 }
 
-.priofile-bars-links a, .priofile-bars-links button {
+.profile-bars-categories div:after {
+  content: ", ";
+}
+
+.profile-bars-categories div:last-child:after {
+  content: "";
+}
+
+.profile-bars-links a, .profile-bars-links button {
   display: inline-block;
   margin: 0 0.3rem 0.3rem 0.3rem;
   padding: 0.5rem 0.8rem;
-  background-color: var(--second-color);
+  background-color: var(--theme-color1);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -70,10 +84,52 @@
   text-decoration: none;
 }
 
-.priofile-bars-links a:hover, .priofile-bars-links button:hover {
+.profile-bars-links a:hover, .profile-bars-links button:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.profile-bars-closed {
+  color: red;
+  font-weight: bold;
+}
+
+.profile-bars-open {
+  color: green;
+  font-weight: bold;
+}
+/* ----- /Bars ----- */
+
+#profile-bars-none {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+/* ----- Pagination ----- */
+#profile-bars-page {
+  margin-bottom: 0.3rem;
+  font-size: var(--small-font);
+  font-style: italic;
+}
+
+#profile-bars-page-btns button {
+  margin: 0 0.3rem;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--theme-color1);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+}
+
+#profile-bars-page-btns button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* ----- /Pagination ----- */
 
 /* ----- Breakpoints ----- */
 /* Medium screen devices (768px and above) */

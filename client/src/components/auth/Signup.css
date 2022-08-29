@@ -1,6 +1,6 @@
 #signup {
   width: 90%;
-  margin: 4rem 0;
+  margin: 2rem 0 4rem 0;
   text-align: center;
 }
 
@@ -11,17 +11,17 @@
 #signup-header span {
   position: relative;
   top: 5px;
-  right: 3px;
+  left: 3px;
+  color: var(--theme-color1);
 }
 
 /* ----- Form ----- */
 #signup-form {
   width: 100%;
   margin: 0 auto 1rem auto;
-  padding: 1.5rem 0;
+  padding: 1rem;
   background-color: var(--light-color);
   border-radius: 0.5rem;
-  font-size: var(--default-font);
 }
 
 .signup-input {
@@ -34,7 +34,7 @@
 }
 
 .signup-input input {
-  width: 80%;
+  width: 90%;
   padding: 0.3rem 0.5rem;
   border: 0.05rem solid gray;
   border-radius: 0.3rem;
@@ -43,7 +43,7 @@
 
 #signup-submit input {
   padding: 0.5rem 0.8rem;
-  background-color: var(--second-color);
+  background-color: var(--theme-color1);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -61,15 +61,13 @@
 #signup-error-msg {
   display: flex;
   justify-content: center;
-  width: 90%;
-  margin: 0 auto 1.5rem auto;
+  margin: 0 auto 1rem auto;
 }
 
 #signup-error-msg div {
   padding: 0.7rem 1rem;
   background-color: var(--error-color);
   border-radius: 0.5rem;
-  font-size: var(--default-font);
   font-style: italic;
   font-weight: 300;
 }
@@ -79,14 +77,14 @@
 /* Medium screen devices (768px and above) */
 @media only screen and (min-width: 768px) {
   #signup {
-    width: 70%;
+    width: 60%;
   }
 }
  
 /* Extra big screen devices (1200px and above) */
 @media only screen and (min-width: 1200px) {
   #signup {
-    width: 50%;
+    width: 40%;
   }
 }
 /* ----- /Breakpoints ----- */
