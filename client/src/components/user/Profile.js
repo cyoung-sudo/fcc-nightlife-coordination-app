@@ -52,8 +52,6 @@ export default function Profile(props) {
       })
       .then(res => {
         logout();
-        // Navigate to root route
-        navigate("/");
       })
       .catch(err => console.log(err));
     }
