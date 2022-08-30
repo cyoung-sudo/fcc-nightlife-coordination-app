@@ -3,7 +3,7 @@ import axios from 'axios';
 // React
 import { useState, useEffect } from 'react';
 // Router
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Icons
 import { BsStarFill, BsStar } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
@@ -19,6 +19,8 @@ export default function Profile(props) {
   // Pagination
   const [page, setPage] = useState(1);
   const [pageContent, setPageContent] = useState([]);
+  // Hooks
+  const navigate = useNavigate();
 
   //----- Get bars for current user
   useEffect(() => {
@@ -37,6 +39,40 @@ export default function Profile(props) {
     })
     .catch(err => console.log(err));
   }, [refresh, page]);
+
+  // Handle delete button
+  const handleDelAcc = () => {
+    let result = window.confirm("Are you sure you want to delete your account?");
+    if(result) {
+      // Request to delete account
+      axios({
+        method: "delete",
+        withCredentials: true,
+        url: "/api/user"
+      })
+      .then(res => {
+        logout();
+        // Navigate to root route
+        navigate("/");
+      })
+      .catch(err => console.log(err));
+    }
+  };
+
+  //----- Handle user logout
+  const logout = () =>{
+    // Request for user logout
+    axios({
+      method: "post",
+      withCredentials: true,
+      url: "/api/auth/logout"
+    })
+    .then(res => {
+      // Redirect to root route
+      navigate("/");
+    })
+    .catch(err => console.log(err));
+  };
 
   //----- Remove bar for current user
   const handleRemove = barId => {
@@ -80,6 +116,10 @@ export default function Profile(props) {
       <div id="profile">
         <div id="profile-header">
           <h1>{props.session.user.username}'s Profile<span><CgProfile/></span></h1>
+        </div>
+
+        <div id="profile-links">
+          <button onClick={handleDelAcc}>Delete account</button>
         </div>
   
         {(pageContent.length > 0) && <ul id="profile-bars">

@@ -1,6 +1,8 @@
 const express = require("express");
 // Models
 const UserBars = require("../models/UserBarsModel");
+const UserSearch = require("../models/UserSearchModel");
+const User = require("../models/UserModel");
 
 const userRoutes = express.Router();
 
@@ -97,6 +99,31 @@ userRoutes.get("/api/user/bars", (req, res) => {
     res.json({ bars: barsCopy });
   })
   .catch(err => console.log(err));
+});
+
+//----- Delete an account
+userRoutes.delete('/api/user', (req, res) => {
+  // Check for valid session
+  if(req.session.passport !== undefined) {
+    // Delete user-bars
+    UserBars.findOneAndDelete({ user_id: req.session.user._id })
+    .then(data => {
+      // Delete recent-search
+      UserSearch.findOneAndDelete({ user_id: req.session.user._id })
+      .then(data2 => {
+        // Delete user
+        User.findByIdAndDelete(req.session.user._id)
+        .then(user => {
+          res.json({ success: true })
+        })
+        .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+  } else {
+    res.json({ success: false });
+  }
 });
 
 module.exports = userRoutes;

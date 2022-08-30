@@ -5,7 +5,7 @@
 }
 
 #profile-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #profile-header span {
@@ -13,6 +13,25 @@
   top: 5px;
   left: 3px;
   color: var(--theme-color1);
+}
+
+#profile-links {
+  margin-bottom: 2rem;
+}
+
+#profile-links button {
+  padding: 0.5rem 0.8rem;
+  background-color: var(--theme-color1);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+}
+
+#profile-links button:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* ----- Bars ----- */
