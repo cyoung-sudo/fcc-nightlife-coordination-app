@@ -69,9 +69,6 @@ export default function Bars(props) {
             <div className="bars-links">
               <Link to={result.id}>More Info</Link>
             </div>
-            <div>
-              {result.is_closed ? <span className="bars-closed">Closed</span> : <span className="bars-open">Open</span>}
-            </div>
           </li>
         ))}
       </ul>

@@ -19,7 +19,7 @@ export default function Bar(props) {
   const [bar, setBar] = useState({});
   // Formatted data
   const [formattedPhotos, setFormattedPhotos] = useState([]);
-  const [formattedHours, setFormattedHours] = useState([]);
+  const [formattedHours, setFormattedHours] = useState({});
   // Messages
   const [message, setMessage] = useState("");
   // Loading status
@@ -90,18 +90,19 @@ export default function Bar(props) {
   };
 
   const formatHours = hours => {
-    return hours.map(hour => {
-      let result = [];
+    let result = {};
+    for(let hour of hours) {
       let startH = parseInt(hour.start.slice(0,2));
       let startM = hour.start.slice(2);
       let endH = parseInt(hour.end.slice(0,2));
       let endM = hour.end.slice(2);
       // Format start-hours
-      result[0] = formatHoursHelper(startH, startM);
+      let startFmt = formatHoursHelper(startH, startM);
       // Format end-hours
-      result[1] = formatHoursHelper(endH, endM);
-      return result;
-    });
+      let endFmt = formatHoursHelper(endH, endM);
+      result[hour.day] = [startFmt, endFmt];
+    }
+    return result;
   };
 
   const formatHoursHelper = (hour, min) => {
@@ -169,7 +170,7 @@ export default function Bar(props) {
             ))}
           </div>
           <div id="bar-time">
-            {bar.is_closed ? <span className="bar-closed">Closed</span> : <span className="bar-open">Open</span>}
+            {bar.hours[0].is_open_now ? <span className="bar-open">Open</span> : <span className="bar-closed">Closed</span>}
           </div>
         </div>
   
@@ -192,13 +193,27 @@ export default function Bar(props) {
           <div id="bar-hours">
             <h2>Hours<span><AiFillClockCircle/></span></h2>
             <div id="bar-hours-content">
-              <div>Mon {formattedHours[0][0]} - {formattedHours[0][1]}</div>
-              <div>Tue {formattedHours[1][0]} - {formattedHours[1][1]}</div>
-              <div>Wed {formattedHours[2][0]} - {formattedHours[2][1]}</div>
-              <div>Thu {formattedHours[3][0]} - {formattedHours[3][1]}</div>
-              <div>Fri {formattedHours[4][0]} - {formattedHours[4][1]}</div>
-              <div>Sat {formattedHours[5][0]} - {formattedHours[5][1]}</div>
-              <div>Sun {formattedHours[6][0]} - {formattedHours[6][1]}</div>
+              <div>Mon {formattedHours[0] ?
+                <span>{formattedHours[0][0]} - {formattedHours[0][1]}</span> : "Closed"}
+              </div>
+              <div>Tue {formattedHours[1] ?
+                <span>{formattedHours[1][0]} - {formattedHours[1][1]}</span> : "Closed"}
+              </div>
+              <div>Wed {formattedHours[2] ?
+                <span>{formattedHours[2][0]} - {formattedHours[2][1]}</span> : "Closed"}
+              </div>
+              <div>Thu {formattedHours[3] ?
+                <span>{formattedHours[3][0]} - {formattedHours[3][1]}</span> : "Closed"}
+              </div>
+              <div>Fri {formattedHours[4] ?
+                <span>{formattedHours[4][0]} - {formattedHours[4][1]}</span> : "Closed"}
+              </div>
+              <div>Sat {formattedHours[5] ?
+                <span>{formattedHours[5][0]} - {formattedHours[5][1]}</span> : "Closed"}
+              </div>
+              <div>Sun {formattedHours[6] ?
+                <span>{formattedHours[6][0]} - {formattedHours[6][1]}</span> : "Closed"}
+              </div>
             </div>
           </div>
 

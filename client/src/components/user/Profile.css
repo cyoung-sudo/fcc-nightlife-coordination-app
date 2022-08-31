@@ -107,16 +107,6 @@
   cursor: pointer;
   text-decoration: underline;
 }
-
-.profile-bars-closed {
-  color: red;
-  font-weight: bold;
-}
-
-.profile-bars-open {
-  color: green;
-  font-weight: bold;
-}
 /* ----- /Bars ----- */
 
 #profile-bars-none {

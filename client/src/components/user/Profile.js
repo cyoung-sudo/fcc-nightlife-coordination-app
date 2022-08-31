@@ -144,9 +144,6 @@ export default function Profile(props) {
                 <Link to={`/bars/${bar.id}`}>More Info</Link>
                 <button onClick={() => handleRemove(bar.id)}>Remove</button>
               </div>
-              <div>
-                {bar.is_closed ? <span className="profile-bars-closed">Closed</span> : <span className="profile-bars-open">Open</span>}
-              </div>
             </li>
           ))}
         </ul>}

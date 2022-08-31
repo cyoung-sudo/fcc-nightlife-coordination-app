@@ -103,7 +103,7 @@ export default function SearchBars(props) {
         </div>
 
         <div className="search-bars-radio">
-          <label>Open Now</label>
+          <label>Only show open?</label>
           <input type="radio" value={true} name="open" defaultChecked onChange={e => setOpen(e.target.value)}/> Yes
           <input type="radio" value={false} name="open" onChange={e => setOpen(e.target.value)}/> No
         </div>

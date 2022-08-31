@@ -106,16 +106,6 @@
 .bars-links a:hover {
   text-decoration: underline;
 }
-
-.bars-closed {
-  color: red;
-  font-weight: bold;
-}
-
-.bars-open {
-  color: green;
-  font-weight: bold;
-}
 /* ----- /Bar Results ----- */
 
 /* ----- Pagination ----- */
