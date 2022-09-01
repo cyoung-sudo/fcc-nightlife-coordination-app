@@ -65,9 +65,14 @@
 /* ----- /Links ----- */
 
 /* ----- Collapsed Links ----- */
-#navbar-collapse-toggle,
+#navbar-collapse-toggle {
+  display: none;
+}
+
 #navbar-collapse-links {
   display: none;
+  position: absolute;
+  z-index: 10;
 }
 
 #navbar-collapse-button {
@@ -91,7 +96,7 @@
   display: block;
   width: 100%;
   padding: 0.5rem;
-  background-color: black;
+  background-color: var(--light-dark-color);
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -102,7 +107,7 @@
   width: 100%;
   padding: 0.5rem;
   border: none;
-  background-color: black;
+  background-color: var(--light-dark-color);
   color: white;
   text-decoration: none;
   font-weight: bold;
